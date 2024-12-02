@@ -1,5 +1,6 @@
 package com.codercamp.countdown;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -37,11 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void countDownStart() {
         runnable = new Runnable() {
+            @SuppressLint("DefaultLocale")
             @Override
             public void run() {
                 try {
                     handler.postDelayed(this, 1000);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                    @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
                     Date event_date = dateFormat.parse(EVENT_DATE_TIME);
                     Date current_date = new Date();
                     if (!current_date.after(event_date)) {
